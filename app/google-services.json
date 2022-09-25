@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "336504308684",
+    "project_id": "jumana-sfinalproject",
+    "storage_bucket": "jumana-sfinalproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336504308684:android:2e84dc36205a95b31c9369",
+        "android_client_info": {
+          "package_name": "shk.jumana.jumanasfinalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336504308684-tvarq0eucfb85vbh0sfckjuce88ncach.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAksDfebKtexMWyaCPdWpkhqXi9yMZmB2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336504308684-tvarq0eucfb85vbh0sfckjuce88ncach.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
