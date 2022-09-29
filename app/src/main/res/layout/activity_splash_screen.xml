@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".Splash_Screen">
 
+    <TextView
+        android:id="@+id/extWelcome"
+        android:layout_width="146dp"
+        android:layout_height="51dp"
+        android:text="Welcome"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="242dp" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="enter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="548dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
