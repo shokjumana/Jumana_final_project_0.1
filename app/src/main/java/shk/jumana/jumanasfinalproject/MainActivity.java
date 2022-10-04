@@ -14,8 +14,6 @@ public class MainActivity extends AppCompatActivity
 {
     private Button btnEnterMain;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
