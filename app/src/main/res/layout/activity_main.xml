@@ -12,5 +12,5 @@
         android:id="@+id/btnEnterMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="enter 2big" />
+        android:text="enter MainActivity" />
 </LinearLayout>

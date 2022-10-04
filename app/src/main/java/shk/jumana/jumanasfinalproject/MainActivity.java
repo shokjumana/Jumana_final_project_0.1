@@ -14,24 +14,26 @@ public class MainActivity extends AppCompatActivity
 {
     private Button btnEnterMain;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       btnEnterMain  = findViewById(R.id.btnEnterMain);
-
-       btnEnterMain.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view)
-           {
-               Intent i = new Intent(MainActivity.this,Splash_Screen.class);
-               startActivity(i);
-
-           }
-       });
 
 
+        btnEnterMain=findViewById(R.id.btnEnterMain);
+
+        btnEnterMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+
+                Intent i = new Intent (MainActivity.this,Splash_Screen.class);
+                startActivity(i);
+
+            }
+        });
 
     }
     @Override
