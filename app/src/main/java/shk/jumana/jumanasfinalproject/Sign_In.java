@@ -27,7 +27,7 @@ public class Sign_In extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_in);//يبني واجهة المستعمل بحيث تبني كل الكائنات الموجودة في ملف التنسيق ال xml
 
         etEmail1=findViewById(R.id.etEmail1);
         etPassword1=findViewById(R.id.etPassword1);
@@ -43,6 +43,11 @@ public class Sign_In extends AppCompatActivity
                 startActivity(i);
             }
         });
+        //the OnClickListener() interface has an onClick(View v)
+        // method that is called when the view (component) is clicked.
+        // The code for a component's functionality is written inside this method,
+        // and the listener is set using the setOnClickListener() method.
+        //تحتوي واجهة OnClickListener () على طريقة onClick (View v) التي يتم استدعاؤها عند النقر فوق العرض (المكون).
 
 
         btnSignUp1.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +67,9 @@ public class Sign_In extends AppCompatActivity
             public void onClick(View view)
             {
 
-                CheckAndSave();
+                CheckAndSave();//the purpose of check and save is to go to the sign in page
+                //توثيق خاص : used for signing in and signing out
+
 
             }
         });
@@ -110,22 +117,22 @@ public class Sign_In extends AppCompatActivity
 
         if (isOk)
         {
-            FirebaseAuth auth=FirebaseAuth.getInstance();
+            FirebaseAuth auth=FirebaseAuth.getInstance();// بفتح ال firebase و بتسجل فيو ال email and password
             auth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task)
                 {
-                    if (task.isSuccessful())
+                    if (task.isSuccessful())//check if creating account is complete and successful
                     {
                         Toast.makeText(Sign_In.this, "Successful", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(Sign_In.this,MainActivity.class);
                         startActivity(i);
-                        finish();
+                        finish();//when it completes it finishes and goes to the sign in page,close current activity
                     }
 
                     else
                         Toast.makeText(Sign_In.this, "Not Successful"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
+//when it completes it finishes and goes to the main activity page,close current activity
                 }
             });
 

@@ -38,7 +38,8 @@ public class Sign_Up extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                CheckAndSave();
+                CheckAndSave();//the purpose of check and save is to go to the sign in page
+                //توثيق خاص : used for signing in and signing out
 
 
             }
@@ -52,8 +53,9 @@ public class Sign_Up extends AppCompatActivity {
         String Email=etEmail2.getText().toString();
         String Password=etPassword2.getText().toString();
         String ConfirmPassword=etConfirmPassword.getText().toString();
-        boolean isOk=true;//
+        boolean isOk=true;//// بمشي على كل الفحوصات ويفحصهن
 
+        //لما نعمل فحص احنا منحط احتمال انو غلط , عشان اذا كان الفحص غلط ,بوقف عن العمل
 
         if (Email.length()*Password.length()*ConfirmPassword.length()==0)//تفحص اذا كلمة السر وتأكيد كلمة السر يساوون 0
         {
@@ -74,15 +76,16 @@ public class Sign_Up extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task)
                 {
-                    if (task.isSuccessful())
+                    if (task.isSuccessful())//check if creating account is complete and successful
                     {
                         Toast.makeText(Sign_Up.this, "creation successful", Toast.LENGTH_SHORT).show();
-                        finish();
+                        finish();//when it completes it finishes and goes to the sign in page,close current activity
                     }
                     else
                     {
                         Toast.makeText(Sign_Up.this, "creation failed"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                    }                        //gives a text that its not working - creation failed
+
 
                 }
             });
