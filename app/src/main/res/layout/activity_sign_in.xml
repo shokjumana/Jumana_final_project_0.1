@@ -15,13 +15,15 @@
             android:id="@+id/etEmail1"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:drawableLeft="@drawable/email"
+            android:inputType="textWebEmailAddress"
             android:padding="5dp"
-            android:hint="Email " />
+            android:hint="email"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -37,8 +39,9 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:drawableLeft="@drawable/lock"
-            android:padding="5dp"
-            android:hint="Password" />
+            android:hint="password"
+            android:inputType="textPassword"
+            android:padding="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
