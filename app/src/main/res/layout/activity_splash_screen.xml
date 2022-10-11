@@ -6,12 +6,10 @@
     android:layout_height="wrap_content"
     tools:context=".Splash_Screen">
 
-    <Button
-        android:id="@+id/btn1"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="160dp"
-        android:text="enter"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="492dp" />
+        android:layout_height="697dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/jjuu" />
 </LinearLayout>

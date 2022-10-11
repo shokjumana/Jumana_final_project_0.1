@@ -13,9 +13,18 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:layout_height="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:drawableLeft="@drawable/email"
+            android:padding="5dp"
+            android:hint="Email"
+            android:inputType="textWebEmailAddress"
+
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -24,9 +33,16 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password" />
+            android:layout_height="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:drawableLeft="@drawable/lock"
+            android:padding="5dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -35,14 +51,28 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etConfirmPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Confirm Passwordd" />
+            android:layout_height="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:drawableLeft="@drawable/lock"
+            android:padding="5dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="save" />
+        android:text="save"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+
+        />
 </LinearLayout>
