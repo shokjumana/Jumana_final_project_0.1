@@ -4,12 +4,17 @@
 
     <item
         android:id="@+id/itmSettings"
-        android:icon="@android:drawable/ic_input_get"
+        android:icon="@drawable/ic_baseline_settings_24"
         android:title="Settings"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/itmHistory"
-        android:icon="@android:drawable/ic_menu_recent_history"
+        android:icon="@drawable/ic_baseline_history_24"
         android:title="History"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/itmSignOut"
+        android:icon="@drawable/logout"
+        android:title="Item"
         app:showAsAction="always|withText" />
 </menu>

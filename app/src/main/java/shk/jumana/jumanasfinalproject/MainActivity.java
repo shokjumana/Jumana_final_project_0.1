@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity
 {
 
@@ -39,6 +41,13 @@ public class MainActivity extends AppCompatActivity
         {
             Intent i = new Intent(MainActivity.this, History.class);
             startActivity(i);
+        }
+
+        if (item.getItemId() == R.id.itmSignOut)
+        {
+            //تسجيل خروج
+            FirebaseAuth.getInstance().signOut();
+            finish();
         }
 
         return true;
