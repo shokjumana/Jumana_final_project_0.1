@@ -14,6 +14,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * sign up
+ */
+
 public class Sign_Up extends AppCompatActivity {
 
     private TextInputEditText etEmail2;
@@ -73,11 +77,20 @@ public class Sign_Up extends AppCompatActivity {
         {
             FirebaseAuth auth=FirebaseAuth.getInstance();
             auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                /**
+                 * * when the mission of this task-is complete
+                 * @param task   info about the event
+                 */
+
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task)
                 {
                     if (task.isSuccessful())//check if creating account is complete and successful
                     {
+                        //A toast provides simple feedback about an operation in a small popup.
+                        // It only fills the amount of space required for the message
+                        // and the current activity remains visible and interactive.
+                        // Toasts automatically disappear after a timeout
                         Toast.makeText(Sign_Up.this, "creation successful", Toast.LENGTH_SHORT).show();
                         finish();//when it completes it finishes and goes to the sign in page,close current activity
                     }

@@ -15,6 +15,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * sign iny
+ */
+
 public class Sign_In extends AppCompatActivity
 {
 
@@ -132,7 +136,7 @@ public class Sign_In extends AppCompatActivity
 
                     else
                         Toast.makeText(Sign_In.this, "Not Successful"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//when it completes it finishes and goes to the main activity page,close current activity
+//when it completes it finishes and goes to the main activity page,close current activity and                         //gives a text that its not working - creation failed
                 }
             });
 

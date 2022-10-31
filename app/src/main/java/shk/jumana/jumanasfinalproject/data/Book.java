@@ -4,15 +4,13 @@ public class Book
 {
     private String key;
     private String owner;
-    private String Title;
-    private String name;
+    private String Name;
     private String Author;
-    private int year;
-    private int age;
+    private int Date;
     private String Genre;
-    private int pages;
-    private int rate;
     private String About;
+    private int Rate;
+    private int Age;
 
     public Book()
     {
@@ -35,20 +33,12 @@ public class Book
         this.owner = owner;
     }
 
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String title) {
-        Title = title;
-    }
-
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getAuthor() {
@@ -59,20 +49,12 @@ public class Book
         Author = author;
     }
 
-    public int getYear() {
-        return year;
+    public int getDate() {
+        return Date;
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setDate(int date) {
+        Date = date;
     }
 
     public String getGenre() {
@@ -83,21 +65,6 @@ public class Book
         Genre = genre;
     }
 
-    public int getPages() {
-        return pages;
-    }
-
-    public void setPages(int pages) {
-        this.pages = pages;
-    }
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
-    }
-
     public String getAbout() {
         return About;
     }
@@ -106,22 +73,37 @@ public class Book
         About = about;
     }
 
+    public int getRate() {
+        return Rate;
+    }
+
+    public void setRate(int rate) {
+        Rate = rate;
+    }
+
+    public int getAge() {
+        return Age;
+    }
+
+    public void setAge(int age) {
+        Age = age;
+    }
 
     @Override
     public String toString() {
         return "Book{" +
                 "key='" + key + '\'' +
                 ", owner='" + owner + '\'' +
-                "Title ="+ Title+'\'' +
-                ", name='" + name + '\'' +
+                ", Name='" + Name + '\'' +
                 ", Author='" + Author + '\'' +
-                ", year=" + year +
-                ", age=" + age +
+                ", Date=" + Date +
                 ", Genre='" + Genre + '\'' +
-                ", pages=" + pages +
-                ", Rate = " +rate+
-                ", About = "+ About+
+                ", About='" + About + '\'' +
+                ", Rate="+ Rate+
+                ", Age=" + Age +
                 '}';
     }
+
+
 
 }
