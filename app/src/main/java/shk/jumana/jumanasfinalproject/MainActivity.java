@@ -1,5 +1,7 @@
 package shk.jumana.jumanasfinalproject;
 
+import static shk.jumana.jumanasfinalproject.R.id.btnAddBook;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,16 +22,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import shk.jumana.jumanasfinalproject.data.Book;
+import shk.jumana.jumanasfinalproject.data.BookAdapter;
+
 /**
  * main activity
  */
 
 public class MainActivity extends AppCompatActivity
 {
-
-    private ImageButton btnAddBook;
     //build a وسيط
+    private ImageButton btnAddBook;
     //تجهيز الوسيط
+    BookAdapter bookAdapter;
+    //list to show all the books
+    ListView bookList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,12 +45,30 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         //بناء شاشة التنسيق وكل الكائنات التي تحويه
 
+        btnAddBook=findViewById(R.id.btnAddBook);
+        //بناء وسيط
+        bookAdapter = new BookAdapter(getApplicationContext());
+        //تجهيز مؤشر لقائمة العرض
+        bookList=findViewById(R.id.BookList);
 
-        /** btnAddBook=findViewById(R.id.btnAddBook);
-         *
-         */
+        bookList.setAdapter(bookAdapter);
 
 
+        //downloading and working on listener for every change on قاعدة البيانات and cleans the given info so it deletes
+        //it and downloads new info.
+
+
+        ReadBookFromFirebase();
+
+
+        btnAddBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent i = new Intent(MainActivity.this,addBook.class);
+                startActivity(i);
+            }
+        });
 
 
 
@@ -130,7 +156,7 @@ public class MainActivity extends AppCompatActivity
         {
             /**
              *                  دالة معالجة حدث عند تغيير اي قيمة في ال firebase
-             * @param snapshot              يحوي نسخة عن كل المعطيات تحت العنوان المراقبل يعني الي محطوط علي listener
+             * @param snapshot يحوي نسخة عن كل المعطيات تحت العنوان المراقبل يعني الي محطوط علي listener
              */
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
@@ -139,6 +165,15 @@ public class MainActivity extends AppCompatActivity
                 //بعطي معطيات
                 //الكائن الي فيو بحوي معيطيات الي بكونو تحت الجذر
                 //remove all tasks
+
+                bookAdapter.clear();
+
+                for (DataSnapshot d:snapshot.getChildren())//ال snapshot من نوع d, يمر على جميع المعطيات
+                {
+                    Book b=d.getValue(Book.class);//استخراج الابن, جميع الابناء, استخراج كائن محفوظ
+                    bookAdapter.add(b);
+
+                }
 
 
 

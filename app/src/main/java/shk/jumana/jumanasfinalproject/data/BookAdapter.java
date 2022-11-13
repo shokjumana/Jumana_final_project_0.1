@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import shk.jumana.jumanasfinalproject.MainActivity;
 import shk.jumana.jumanasfinalproject.R;
 
 //build the adapter for one kind of jop, which is "Book" .
@@ -45,6 +46,10 @@ public class BookAdapter extends ArrayAdapter<Book>
         tvBookAuthor.setText(book.getAuthor());
         tvBookGenre.setText(book.getGenre());
         bookRating.setRating(book.getRate());
+
+
+
+
 
         return vBook;
 
