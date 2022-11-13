@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <SearchView
-            android:layout_width="199dp"
+            android:layout_width="288dp"
             android:layout_height="wrap_content"
             android:layout_weight="4">
 

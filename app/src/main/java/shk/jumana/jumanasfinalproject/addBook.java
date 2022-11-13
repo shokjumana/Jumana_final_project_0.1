@@ -49,7 +49,6 @@ public class addBook extends AppCompatActivity
         tvAbout=findViewById(R.id.tvAbout);
         btnCancelTask= findViewById(R.id.btnCancelTask);
         btnSaveTask= findViewById(R.id.btnSaveTask);
-        imageBook=findViewById(R.id.imageBook);
 
 
 
@@ -117,11 +116,12 @@ public class addBook extends AppCompatActivity
                         if (task.isSuccessful())
                         {
                             finish();
-                            Toast.makeText(addBook.this,"added succefuly",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(addBook.this,"added successfuly",Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
-                            Toast.makeText(addBook.this,"added failled",Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(addBook.this,"added failed",Toast.LENGTH_SHORT).show();
                         }
 
 
