@@ -1,5 +1,7 @@
 package shk.jumana.jumanasfinalproject;
 
+import static shk.jumana.jumanasfinalproject.R.id.etAbout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,7 +32,7 @@ public class addBook extends AppCompatActivity
     private TextInputEditText etGenre;
     private ImageButton imageBook;
     private RatingBar rbRate;
-    private TextView tvAbout;
+    private TextInputEditText etAbout;
     private Button btnCancelTask;
     private Button btnSaveTask;
 
@@ -46,7 +48,7 @@ public class addBook extends AppCompatActivity
         etAge=findViewById(R.id.etAge);
         etGenre=findViewById(R.id.etGenre);
         rbRate=findViewById(R.id.rbRate);
-        tvAbout=findViewById(R.id.tvAbout);
+        etAbout=findViewById(R.id.etAbout);
         btnCancelTask= findViewById(R.id.btnCancelTask);
         btnSaveTask= findViewById(R.id.btnSaveTask);
 
@@ -78,7 +80,7 @@ public class addBook extends AppCompatActivity
                 int Age= Integer.parseInt(etAge.getText().toString());
                 String Genre=etGenre.getText().toString();
                 int Rate=rbRate.getNumStars();
-                String About=tvAbout.getText().toString();
+                String About=etAbout.getText().toString();
 
 
                 Book B= new Book();
@@ -125,24 +127,12 @@ public class addBook extends AppCompatActivity
                         }
 
 
-
-
                     }
                 });
 
 
-
-
-
-
-
             }
         });
-
-
-
-
-
 
     }
 }

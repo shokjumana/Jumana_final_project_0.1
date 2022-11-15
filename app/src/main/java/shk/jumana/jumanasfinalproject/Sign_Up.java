@@ -1,5 +1,7 @@
 package shk.jumana.jumanasfinalproject;
 
+import static shk.jumana.jumanasfinalproject.R.id.etUsername;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Sign_Up extends AppCompatActivity {
 
+    private TextInputEditText etUsername;
     private TextInputEditText etEmail2;
     private TextInputEditText etPassword2;
     private TextInputEditText etConfirmPassword;
@@ -32,6 +35,8 @@ public class Sign_Up extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
 
+
+        etUsername=findViewById(R.id.etUsername);
         etEmail2=findViewById(R.id.etEmail2);
         etPassword2=findViewById(R.id.etPassword2);
         etConfirmPassword=findViewById(R.id.etConfirmPassword);
