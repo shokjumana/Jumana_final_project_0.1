@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/browmlight"
+    >
 
     <ImageView
         android:id="@+id/BookImage"
@@ -22,19 +24,27 @@
             android:id="@+id/tvBookName"
             android:layout_width="match_parent"
             android:layout_height="59dp"
-            android:text="Book" />
+            android:hint="Book Name"
+            android:text="Book"
+            android:textColor="#070707"
+            android:textColorHighlight="#009688"
+            android:textColorHint="#020202" />
 
         <TextView
             android:id="@+id/tvBookAuthor"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Author" />
+            android:hint="Author"
+            android:text="Author"
+            android:textColor="#050505" />
 
         <TextView
             android:id="@+id/tvBookGenre"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Genre" />
+            android:hint="Book Genre"
+            android:text="Genre"
+            android:textColor="#070707" />
 
         <RatingBar
             android:id="@+id/bookRating"

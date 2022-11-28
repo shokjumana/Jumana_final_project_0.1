@@ -5,10 +5,14 @@ import static shk.jumana.jumanasfinalproject.R.id.etAbout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
@@ -21,6 +25,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+
 import shk.jumana.jumanasfinalproject.data.Book;
 
 public class addBook extends AppCompatActivity
@@ -28,6 +34,8 @@ public class addBook extends AppCompatActivity
     private TextInputEditText etNameBook;
     private TextInputEditText etAuthor;
     private EditText etDate;
+    private TextView tvDate;
+    DatePickerDialog.OnDateSetListener setListener;
     private EditText etAge;
     private TextInputEditText etGenre;
     private ImageButton imageBook;
@@ -51,6 +59,45 @@ public class addBook extends AppCompatActivity
         etAbout=findViewById(R.id.etAbout);
         btnCancelTask= findViewById(R.id.btnCancelTask);
         btnSaveTask= findViewById(R.id.btnSaveTask);
+
+        Calendar calendar=Calendar.getInstance();
+        final int year=calendar.get(Calendar.YEAR);
+        final int month=calendar.get(Calendar.MONTH);
+        final int day=calendar.get(Calendar.DAY_OF_MONTH);
+
+        tvDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog= new DatePickerDialog(
+                        addBook.this, android.R.style.Widget_Holo_ActionBar_Solid,
+                        setListener,year,month,day);
+                        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        datePickerDialog.show();
+            }
+        });
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day)
+            {
+                month = month+1;
+                String date =day + "/"+month+"/"+year;
+                tvDate.setText(date);
+
+            }
+        };
+
+        etDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+
+
+            }
+        });
+
+
+
 
 
 
@@ -76,11 +123,12 @@ public class addBook extends AppCompatActivity
             {
                 String Name=etNameBook.getText().toString();
                 String Author=etAuthor.getText().toString();
-                int Date= Integer.parseInt(etDate.getText().toString());
                 int Age= Integer.parseInt(etAge.getText().toString());
                 String Genre=etGenre.getText().toString();
-                int Rate=rbRate.getNumStars();
                 String About=etAbout.getText().toString();
+
+
+
 
 
                 Book B= new Book();

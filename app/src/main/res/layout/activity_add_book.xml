@@ -35,11 +35,13 @@
             android:hint="Author" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <EditText
         android:id="@+id/etDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:hint="enter release date"
+
         android:inputType="date" />
 
     <EditText

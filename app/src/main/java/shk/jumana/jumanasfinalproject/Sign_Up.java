@@ -1,6 +1,6 @@
 package shk.jumana.jumanasfinalproject;
 
-import static shk.jumana.jumanasfinalproject.R.id.etUsername;
+import static shk.jumana.jumanasfinalproject.R.id;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +36,6 @@ public class Sign_Up extends AppCompatActivity {
 
 
 
-        etUsername=findViewById(R.id.etUsername);
         etEmail2=findViewById(R.id.etEmail2);
         etPassword2=findViewById(R.id.etPassword2);
         etConfirmPassword=findViewById(R.id.etConfirmPassword);
@@ -47,6 +46,10 @@ public class Sign_Up extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+                Toast.makeText(Sign_Up.this,"Username is"+etUsername,Toast.LENGTH_SHORT).show();
+
+
+
                 CheckAndSave();//the purpose of check and save is to go to the sign in page
                 //توثيق خاص : used for signing in and signing out
 
