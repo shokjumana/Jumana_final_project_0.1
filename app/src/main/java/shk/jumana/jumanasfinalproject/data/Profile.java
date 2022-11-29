@@ -27,7 +27,6 @@ public class Profile
         LastName = lastName;
     }
 
-
     public String getEmail() {
         return Email;
     }
@@ -35,6 +34,7 @@ public class Profile
     public void setEmail(String email) {
         Email = email;
     }
+
     public String getPassWord() {
         return PassWord;
     }
@@ -78,5 +78,16 @@ public class Profile
                 ", Language='" + Language + '\'' +
                 ", Country='" + Country + '\'' +
                 '}';
+
+
+
+
+
+
+
+
     }
+
+
+
 }

@@ -86,10 +86,7 @@ public class Sign_In extends AppCompatActivity
         String Email=etEmail1.getText().toString();
         String Password=etPassword1.getText().toString();
         boolean isOk=true;
-
-
-
-
+        
         if (Email.length()==0)
         {
             etEmail1.setError("please enter your email");

@@ -1,7 +1,5 @@
 package shk.jumana.jumanasfinalproject;
 
-import static shk.jumana.jumanasfinalproject.R.id.etAbout;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,6 +41,7 @@ public class addBook extends AppCompatActivity
     private TextInputEditText etAbout;
     private Button btnCancelTask;
     private Button btnSaveTask;
+    private Button LoadBookPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,6 +58,7 @@ public class addBook extends AppCompatActivity
         etAbout=findViewById(R.id.etAbout);
         btnCancelTask= findViewById(R.id.btnCancelTask);
         btnSaveTask= findViewById(R.id.btnSaveTask);
+        LoadBookPic=findViewById(R.id.LoadBookPic);
 
         Calendar calendar=Calendar.getInstance();
         final int year=calendar.get(Calendar.YEAR);
@@ -183,4 +183,6 @@ public class addBook extends AppCompatActivity
         });
 
     }
+
+
 }
