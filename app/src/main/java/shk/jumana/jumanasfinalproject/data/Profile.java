@@ -2,11 +2,12 @@ package shk.jumana.jumanasfinalproject.data;
 
 public class Profile
 {
+
     private String FirstName;
     private String LastName;
     private String Email;
-    private String PassWord;
-    private int BirthYear;
+    private int Password;
+    private int Birthday;
     private String Language;
     private String Country;
 
@@ -35,25 +36,24 @@ public class Profile
         Email = email;
     }
 
-    public String getPassWord() {
-        return PassWord;
+    public int getPassword() {
+        return Password;
     }
 
-    public void setPassWord(String passWord) {
-        PassWord = passWord;
+    public void setPassword(int password) {
+        Password = password;
     }
 
+    public int getBirthday() {
+        return Birthday;
+    }
+
+    public void setBirthday(int birthday) {
+        Birthday = birthday;
+    }
 
     public String getLanguage() {
         return Language;
-    }
-
-    public int getBirthYear() {
-        return BirthYear;
-    }
-
-    public void setBirthYear(int birthYear) {
-        BirthYear = birthYear;
     }
 
     public void setLanguage(String language) {
@@ -68,26 +68,19 @@ public class Profile
         Country = country;
     }
 
+
     @Override
     public String toString() {
         return "Profile{" +
                 "FirstName='" + FirstName + '\'' +
                 ", LastName='" + LastName + '\'' +
                 ", Email='" + Email + '\'' +
-                ", BirthYear=" + BirthYear +
+                ", Password=" + Password +
+                ", Birthday=" + Birthday +
                 ", Language='" + Language + '\'' +
                 ", Country='" + Country + '\'' +
                 '}';
-
-
-
-
-
-
-
-
     }
-
 
 
 }
