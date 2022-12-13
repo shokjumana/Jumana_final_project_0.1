@@ -17,4 +17,9 @@
         android:icon="@drawable/logout"
         android:title="Item"
         app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/itmProfile"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="itmProfile"
+        app:showAsAction="always|withText" />
 </menu>

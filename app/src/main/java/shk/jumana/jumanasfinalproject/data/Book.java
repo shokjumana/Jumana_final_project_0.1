@@ -2,6 +2,7 @@ package shk.jumana.jumanasfinalproject.data;
 
 public class Book
 {
+    private String image;
     private String key;
     private String owner;
     private String Name;
@@ -15,6 +16,14 @@ public class Book
     public Book()
     {
 
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getKey() {
@@ -102,6 +111,7 @@ public class Book
                 ", About='" + About + '\'' +
                 ", Rate="+ Rate+
                 ", Age=" + Age +
+                ", image=" + image +
                 '}';
     }
 

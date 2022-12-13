@@ -54,12 +54,15 @@ public class MainActivity extends AppCompatActivity
 
             bookList.setAdapter(bookAdapter);
 
+            ReadBookFromFirebase();
 
-            //downloading and working on listener for every change on قاعدة البيانات and cleans the given info so it deletes
+
+
+                //downloading and working on listener for every change on قاعدة البيانات and cleans the given info so it deletes
             //it and downloads new info.
 
 
-            ReadBookFromFirebase();
+
 
 
             btnAddBook.setOnClickListener(new View.OnClickListener() {
@@ -71,128 +74,138 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
+            }
 
 
         }
-            //دالة مسؤولة عن فحص و تشغيل ال menu
-            @Override
-            public boolean onCreateOptionsMenu(Menu menu)
-            {
-                getMenuInflater().inflate(R.menu.main_menu,menu);//بتحط المحل الي الها يعني اللا R هو اللا res يعني resourse
-                return true;
-            }
-            @Override
-            public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-            if (item.getItemId() == R.id.itmSettings)
-            {
-                Intent i = new Intent(MainActivity.this, Settings.class);
-                startActivity(i);
-            }
-            if (item.getItemId() == R.id.itmHistory)
-            {
-                Intent i = new Intent(MainActivity.this, History.class);
-                startActivity(i);
-            }
-
-            if (item.getItemId() == R.id.itmSignOut)
-            {
-                //تسجيل خروج
-                //FirebaseAuth.getInstance().signOut();
-                //finish();
 
 
-                //A dialog is a small window that prompts the user to make a decision or enter additional information.
-                // A dialog does not fill the screen and is normally used for modal events-
-                // that require users to take an action before they can proceed.
-                //getting ready to build dialog
-                AlertDialog.Builder builder= new AlertDialog.Builder(this);
-                builder.setTitle("Sign Out");
-                builder.setMessage("Are You Sure?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i)
-                    {
-                        //dialoginterface هو برامتر الي ببين ايش هي الديالوج
-                        //hide dialog
-                        dialogInterface.dismiss();
-                        //اخفاء شاشة
-                        //sign out from the screen
-                        //build kan from firebase auth to sign out
-                        FirebaseAuth.getInstance().signOut();
-                        //sign out
-                        finish();
+    //دالة مسؤولة عن فحص و تشغيل ال menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main_menu,menu);//بتحط المحل الي الها يعني اللا R هو اللا res يعني resourse
+        return true;
+    }
 
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i)
-                    {
-                        //build dialog
-                        //خروج وتخزين
-                        dialogInterface.cancel();
-
-                    }
-                });
-                AlertDialog dialog=builder.create();
-                //shows the screen
-                dialog.show();
-            }
-
-            return true;
-
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        if (item.getItemId() == R.id.itmSettings)
+        {
+            Intent i = new Intent(MainActivity.this, Settings.class);
+            startActivity(i);
         }
-            private void ReadBookFromFirebase()
-            {
-                //مؤشر لجذر قاعدة البيانات التابعة للمشروع
+        if (item.getItemId() == R.id.itmHistory)
+        {
+            Intent i = new Intent(MainActivity.this, History.class);
+            startActivity(i);
+        }
+        if (item.getItemId() == R.id.itmProfile)
+        {
+            Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+            startActivity(i);
+        }
 
-                DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-                //listener لمراقبة اي تغيير يحدث تحت الجذر المحدد
-                //اي تغيير بقيمة صفة او حذف او اضافة كائن يتم اعلام ال listener
-                //عندها يتم تنزيل,تحميل كل المعطيات الموجودة تحت الجذر
-                //كل معالجي الحدث ببدو ب on
-                reference.child("Book").addValueEventListener(new ValueEventListener()
+        if (item.getItemId() == R.id.itmSignOut)
+        {
+            //تسجيل خروج
+            //FirebaseAuth.getInstance().signOut();
+            //finish();
+
+
+            //A dialog is a small window that prompts the user to make a decision or enter additional information.
+            // A dialog does not fill the screen and is normally used for modal events-
+            // that require users to take an action before they can proceed.
+            //getting ready to build dialog
+            AlertDialog.Builder builder= new AlertDialog.Builder(this);
+            builder.setTitle("Sign Out");
+            builder.setMessage("Are You Sure?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i)
                 {
-                    /**
-                     *                  دالة معالجة حدث عند تغيير اي قيمة في ال firebase
-                     * @param snapshot يحوي نسخة عن كل المعطيات تحت العنوان المراقبل يعني الي محطوط علي listener
-                     */
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
-                    {
-                        // تغيير معطيات بال firebase
-                        //بعطي معطيات
-                        //الكائن الي فيو بحوي معيطيات الي بكونو تحت الجذر
-                        //remove all tasks
+                    //dialog interface هو برامتر الي ببين ايش هي الديالوج
+                    //hide dialog
+                    dialogInterface.dismiss();
+                    //اخفاء شاشة
+                    //sign out from the screen
+                    //build kan from firebase auth to sign out
+                    FirebaseAuth.getInstance().signOut();
+                    //sign out
+                    finish();
 
-                        bookAdapter.clear();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i)
+                {
+                    //build dialog
+                    //خروج وتخزين
+                    dialogInterface.cancel();
 
-                        for (DataSnapshot d:snapshot.getChildren())//ال snapshot من نوع d, يمر على جميع المعطيات
-                        {
-                            Book b=d.getValue(Book.class);//استخراج الابن, جميع الابناء, استخراج كائن محفوظ
-                            bookAdapter.add(b);
-
-                        }
-
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-            }
-
+                }
+            });
+            AlertDialog dialog=builder.create();
+            //shows the screen
+            dialog.show();
         }
+
+        return true;
+
+
+    }
+
+
+
+
+
 
     private void ReadBookFromFirebase()
     {
 
-    }
+        //مؤشر لجذر قاعدة البيانات التابعة للمشروع
 
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+        //listener لمراقبة اي تغيير يحدث تحت الجذر المحدد
+        //اي تغيير بقيمة صفة او حذف او اضافة كائن يتم اعلام ال listener
+        //عندها يتم تنزيل,تحميل كل المعطيات الموجودة تحت الجذر
+        //كل معالجي الحدث ببدو ب on
+        reference.child("Book").addValueEventListener(new ValueEventListener()
+        {
+            /**
+             *                  دالة معالجة حدث عند تغيير اي قيمة في ال firebase
+             * @param snapshot يحوي نسخة عن كل المعطيات تحت العنوان المراقبل يعني الي محطوط علي listener
+             */
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                // تغيير معطيات بال firebase
+                //بعطي معطيات
+                //الكائن الي فيو بحوي معيطيات الي بكونو تحت الجذر
+                //remove all tasks
+
+                bookAdapter.clear();
+
+                for (DataSnapshot d:snapshot.getChildren())//ال snapshot من نوع d, يمر على جميع المعطيات
+                {
+                    Book b=d.getValue(Book.class);//استخراج الابن, جميع الابناء, استخراج كائن محفوظ
+                    bookAdapter.add(b);
+
+                }
+
+            }
+
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+
+            }
+        });
+
+
+    }
 }

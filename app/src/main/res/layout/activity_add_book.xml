@@ -8,9 +8,9 @@
     android:background="@drawable/browmlight"
     tools:context=".addBook">
 
-    <ImageView
-        android:id="@+id/BookPic"
-        android:layout_width="170dp"
+    <ImageButton
+        android:id="@+id/btnImageBook"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/LoadBookPic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="upload" />
 
 
     <com.google.android.material.textfield.TextInputLayout
