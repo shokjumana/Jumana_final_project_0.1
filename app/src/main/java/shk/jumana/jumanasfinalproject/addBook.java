@@ -7,6 +7,7 @@ import static shk.jumana.jumanasfinalproject.R.id.etNameBook;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -67,9 +69,8 @@ public class addBook extends AppCompatActivity
     private Uri toUpLoadimageUri;
     private Uri downloaduri;
     StorageTask uploadBook;
-    private Book b;
-    private ImageButton btnImageBook;
-    private Button LoadBookPic;
+    private Book b=new Book();
+    private ImageView btnImageBook;
     private Uri filePath;
 
 
@@ -87,9 +88,20 @@ public class addBook extends AppCompatActivity
         btnCancelTask = findViewById(R.id.btnCancelTask);
         btnSaveTask = findViewById(R.id.btnSaveTask);
 
+        SharedPreferences preferences=getSharedPreferences("mypref",MODE_PRIVATE);
+        String key = preferences.getString("key", "");
+
+        if(key.length()==0) {
+            Toast.makeText(this, "No key found", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "key:"+key, Toast.LENGTH_SHORT).show();
+        }
+
+
         //upload: 3
         btnImageBook = findViewById(R.id.btnImageBook);
-        LoadBookPic = findViewById(R.id.LoadBookPic);
+
 
         //upload : 4
         btnImageBook.setOnClickListener(new View.OnClickListener() {
@@ -128,59 +140,62 @@ public class addBook extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                CheckAndSave();
-                dataHandler();
+                if(toUpLoadimageUri!= null)
+                    uploadImage(toUpLoadimageUri);
+                else
+                    CheckAndSave();
+//                CheckAndSave();
+//                dataHandler();
             }
 
-
-            private void CheckAndSave()
-            {
-                String Name = etNameBook.getText().toString();
-                String Author = etAuthor.getText().toString();
-                String Genre = etGenre.getText().toString();
-                String About = etAbout.getText().toString();
-
-
-                Book B = new Book();
-                B.setName(Name);
-                B.setAuthor(Author);
-                B.setGenre(Genre);
-                B.setAbout(About);
-
-                //استخراج رقم المميز للمستعمل
-                //uid - universal
-                //user that signed before , مستخدم دخل مسبقا
-
-
-                String owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                B.setOwner(owner);
-
-                String key = FirebaseDatabase.getInstance().getReference()
-                        .child("Book")//جذر جديد تحته يتم تخزين المعلومات
-                        .child(owner)
-                        .push()// add new مستخدم
-                        .getKey();//استخراج الرقم المميز من المهمة التي سيتم اضافتها
-                B.setKey(key);
-
-                //جذر شجرة المعطيات , عنوان جذر شجرة المعطيات
-
-
-                FirebaseDatabase.getInstance().getReference().child("Book").child(owner).child(key).setValue(B).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        if (task.isSuccessful()) {
-                            finish();
-                            Toast.makeText(addBook.this, "added successfuly", Toast.LENGTH_SHORT).show();
-                        } else {
-
-                            Toast.makeText(addBook.this, "added failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
         });
     }
+
+    private void CheckAndSave()
+    {
+        boolean isOk=true;
+        String Name = etNameBook.getText().toString();
+        String Author = etAuthor.getText().toString();
+        String Genre = etGenre.getText().toString();
+        String About = etAbout.getText().toString();
+
+
+
+        b.setName(Name);
+        b.setAuthor(Author);
+        b.setGenre(Genre);
+        b.setAbout(About);
+
+        //استخراج رقم المميز للمستعمل
+        //uid - universal
+        //user that signed before , مستخدم دخل مسبقا
+        String owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        b.setOwner(owner);
+
+        String key = FirebaseDatabase.getInstance().getReference()
+                .child("Book")//جذر جديد تحته يتم تخزين المعلومات
+                .child(owner)
+                .push()// add new مستخدم
+                .getKey();//استخراج الرقم المميز من المهمة التي سيتم اضافتها
+        b.setKey(key);
+
+        //جذر شجرة المعطيات , عنوان جذر شجرة المعطيات
+        FirebaseDatabase.getInstance().getReference().child("Book").child(owner).child(key).setValue(b).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()) {
+                    finish();
+                    Toast.makeText(addBook.this, "added successfuly", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    Toast.makeText(addBook.this, "added failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
 
     private void uploadImage(Uri filePath)
     {
@@ -203,7 +218,7 @@ public class addBook extends AppCompatActivity
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     downloaduri = task.getResult();
                                     b.setImage(downloaduri.toString());
-                                    createBook(b);
+                                    CheckAndSave();
 
                                 }
                             });
@@ -229,11 +244,12 @@ public class addBook extends AppCompatActivity
         }else
         {
             b.setImage("");
-            createBook(b);
+            CheckAndSave();
         }
     }
 
-    private void createBook(Book b)
+
+    /** private void createBook(Book b)
     {
         //1.
         FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -261,7 +277,7 @@ public class addBook extends AppCompatActivity
 
             }
         });
-    }
+    }*/
 
     private void dataHandler() 
     {

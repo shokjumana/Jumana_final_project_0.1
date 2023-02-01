@@ -9,7 +9,7 @@
     tools:context=".ProfileActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ProfileImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:srcCompat="@tools:sample/avatars"
@@ -17,19 +17,18 @@
         />
 
     <Button
-        android:id="@+id/btnLoadPic"
-        android:layout_width="199dp"
+        android:id="@+id/btnProUpload"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:text="Load picture" />
+        android:text="Upload" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProfileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ProfileName"
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_marginStart="20dp"
@@ -40,6 +39,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProfileLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -54,6 +54,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProfileEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -68,23 +69,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProfilePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="316dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="47dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:drawablePadding="5dp"
-            android:hint="Password" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        tools:layout_editor_absoluteY="316dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProfileBirthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -99,6 +91,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProfileLang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="1dp"
@@ -115,6 +108,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ProfileCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -129,7 +123,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnProfSave"
         android:layout_width="178dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
