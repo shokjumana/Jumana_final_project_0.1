@@ -86,7 +86,6 @@ public class ProfileActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                checkAndSave();
             }
         });
 
@@ -96,6 +95,8 @@ public class ProfileActivity extends AppCompatActivity
             {
                 if(toUploadimageUri!= null)
                     uploadImage(toUploadimageUri);
+                else
+                    checkAndSave();
             }
         });
 
@@ -162,10 +163,6 @@ public class ProfileActivity extends AppCompatActivity
             }
         });
     }
-
-
-
-
 
 
     private void pickImageFromGallery()
@@ -301,10 +298,7 @@ public class ProfileActivity extends AppCompatActivity
                 book.setImage("");
                 checkAndSave();
             }
-
-
         }
-
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -321,7 +315,6 @@ public class ProfileActivity extends AppCompatActivity
             }
         }
     }
-
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data)

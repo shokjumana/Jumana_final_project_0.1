@@ -23,27 +23,26 @@
         android:text="Upload" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ProfileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ProfileName"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:drawablePadding="5dp"
-            android:hint="First Name" />
+            android:hint="Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ProfileLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ProfileLastName"
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_marginStart="20dp"
@@ -54,11 +53,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ProfileEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ProfileEmail"
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_marginStart="20dp"
@@ -76,11 +75,11 @@
         tools:layout_editor_absoluteY="316dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ProfileBirthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ProfileBirthday"
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_marginStart="20dp"
@@ -91,13 +90,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ProfileLang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="371dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ProfileLang"
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_marginStart="20dp"
@@ -108,11 +107,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ProfileCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ProfileCountry"
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_marginStart="20dp"

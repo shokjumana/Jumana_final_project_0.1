@@ -98,11 +98,9 @@ public class addBook extends AppCompatActivity
             Toast.makeText(this, "key:"+key, Toast.LENGTH_SHORT).show();
         }
 
-
         //upload: 3
         btnImageBook = findViewById(R.id.btnImageBook);
-
-
+        
         //upload : 4
         btnImageBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,20 +116,15 @@ public class addBook extends AppCompatActivity
                         //permission already granted
                         pickImageFromGallery();
                     }
-
-
                 }
-
             }
         });
-
 
         btnCancelTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(addBook.this, MainActivity.class);
                 startActivity(i);
-
             }
         });
 
@@ -147,19 +140,21 @@ public class addBook extends AppCompatActivity
 //                CheckAndSave();
 //                dataHandler();
             }
-
         });
     }
 
-    private void CheckAndSave()
-    {
-        boolean isOk=true;
+    private void CheckAndSave() {
+        boolean isOk = true;
         String Name = etNameBook.getText().toString();
         String Author = etAuthor.getText().toString();
         String Genre = etGenre.getText().toString();
         String About = etAbout.getText().toString();
 
 
+        if (Name.length() * Author.length() * About.length() * Genre.length() == 0) {
+            etNameBook.setError("one of the files are empty");
+            isOk = false;
+        }
 
         b.setName(Name);
         b.setAuthor(Author);
@@ -179,23 +174,24 @@ public class addBook extends AppCompatActivity
                 .getKey();//استخراج الرقم المميز من المهمة التي سيتم اضافتها
         b.setKey(key);
 
-        //جذر شجرة المعطيات , عنوان جذر شجرة المعطيات
-        FirebaseDatabase.getInstance().getReference().child("Book").child(owner).child(key).setValue(b).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
+        if (isOk)
+        {
+            //جذر شجرة المعطيات , عنوان جذر شجرة المعطيات
+            FirebaseDatabase.getInstance().getReference().child("Book").child(owner).child(key).setValue(b).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
 
-                if (task.isSuccessful()) {
-                    finish();
-                    Toast.makeText(addBook.this, "added successfuly", Toast.LENGTH_SHORT).show();
-                } else {
+                    if (task.isSuccessful()) {
+                        finish();
+                        Toast.makeText(addBook.this, "added successfuly", Toast.LENGTH_SHORT).show();
+                    } else {
 
-                    Toast.makeText(addBook.this, "added failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(addBook.this, "added failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
-
+            });
+        }
     }
-
 
     private void uploadImage(Uri filePath)
     {
@@ -344,11 +340,7 @@ public class addBook extends AppCompatActivity
 //            });
 //
 //
-
-
         }
-
-
     }
 
     private void pickImageFromGallery()
@@ -356,9 +348,7 @@ public class addBook extends AppCompatActivity
         Intent intent=new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent,IMAGE_PICK_CODE);
-    }
-
-    ;
+    };
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
