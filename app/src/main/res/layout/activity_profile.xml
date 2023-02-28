@@ -29,7 +29,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ProfileName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -44,7 +44,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ProfileLastName"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="80dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -59,7 +59,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ProfileEmail"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="80dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -81,7 +81,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ProfileBirthday"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="80dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -98,7 +98,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ProfileLang"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="80dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -113,7 +113,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ProfileCountry"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="80dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"

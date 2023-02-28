@@ -60,7 +60,7 @@ public class addBook extends AppCompatActivity
     private TextInputEditText etGenre;
     private RatingBar rbRateBook;
     private TextInputEditText etAbout;
-    private Button btnCancelTask;
+    private Button btnCancel;
     private Button btnSaveTask;
 
     //upload :1 add xml image
@@ -85,7 +85,7 @@ public class addBook extends AppCompatActivity
         etGenre = findViewById(R.id.etGenre);
         rbRateBook = findViewById(R.id.rbRateBook);
         etAbout = findViewById(R.id.etAbout);
-        btnCancelTask = findViewById(R.id.btnCancelTask);
+        btnCancel = findViewById(R.id.btnCancel);
         btnSaveTask = findViewById(R.id.btnSaveTask);
 
         SharedPreferences preferences=getSharedPreferences("mypref",MODE_PRIVATE);
@@ -102,7 +102,8 @@ public class addBook extends AppCompatActivity
         btnImageBook = findViewById(R.id.btnImageBook);
         
         //upload : 4
-        btnImageBook.setOnClickListener(new View.OnClickListener() {
+        btnImageBook.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "image", Toast.LENGTH_SHORT).show();
@@ -120,7 +121,8 @@ public class addBook extends AppCompatActivity
             }
         });
 
-        btnCancelTask.setOnClickListener(new View.OnClickListener() {
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(addBook.this, MainActivity.class);
@@ -143,13 +145,13 @@ public class addBook extends AppCompatActivity
         });
     }
 
+
     private void CheckAndSave() {
         boolean isOk = true;
         String Name = etNameBook.getText().toString();
         String Author = etAuthor.getText().toString();
         String Genre = etGenre.getText().toString();
         String About = etAbout.getText().toString();
-
 
         if (Name.length() * Author.length() * About.length() * Genre.length() == 0) {
             etNameBook.setError("one of the files are empty");
@@ -183,7 +185,7 @@ public class addBook extends AppCompatActivity
 
                     if (task.isSuccessful()) {
                         finish();
-                        Toast.makeText(addBook.this, "added successfuly", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(addBook.this, "added successfully", Toast.LENGTH_SHORT).show();
                     } else {
 
                         Toast.makeText(addBook.this, "added failed", Toast.LENGTH_SHORT).show();
@@ -192,6 +194,7 @@ public class addBook extends AppCompatActivity
             });
         }
     }
+
 
     private void uploadImage(Uri filePath)
     {
@@ -215,7 +218,6 @@ public class addBook extends AppCompatActivity
                                     downloaduri = task.getResult();
                                     b.setImage(downloaduri.toString());
                                     CheckAndSave();
-
                                 }
                             });
 
@@ -338,8 +340,6 @@ public class addBook extends AppCompatActivity
 //                    }
 //                }
 //            });
-//
-//
         }
     }
 

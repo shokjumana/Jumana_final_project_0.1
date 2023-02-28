@@ -14,8 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import shk.jumana.jumanasfinalproject.MainActivity;
 import shk.jumana.jumanasfinalproject.R;
+import shk.jumana.jumanasfinalproject.addBook;
 
 //build the adapter for one kind of jop, which is "Book" .
 public class BookAdapter extends ArrayAdapter<Book>
@@ -36,7 +36,7 @@ public class BookAdapter extends ArrayAdapter<Book>
         TextView tvBookAuthor=vBook.findViewById(R.id.tvBookAuthor);
         TextView tvBookGenre=vBook.findViewById(R.id.tvBookGenre);
         RatingBar bookRating=vBook.findViewById(R.id.bookRating);
-        Button btnMore=vBook.findViewById(R.id.btnMore);
+        Button btnEdit=vBook.findViewById(R.id.btnEdit);
         ImageView BookImage=vBook.findViewById(R.id.BookImage);
 
 //book كائن من نوع مهمة ومنستخرج قيمتو من ال
@@ -46,6 +46,21 @@ public class BookAdapter extends ArrayAdapter<Book>
         tvBookAuthor.setText(book.getAuthor());
         tvBookGenre.setText(book.getGenre());
         bookRating.setRating(book.getRate());
+
+
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent i=new Intent(getContext(), addBook.claas);
+                i.putExtra("book",book);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(i);
+            }
+        });
+
+
 
 
 
