@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity
         //اي تغيير بقيمة صفة او حذف او اضافة كائن يتم اعلام ال listener
         //عندها يتم تنزيل,تحميل كل المعطيات الموجودة تحت الجذر
         //كل معالجي الحدث ببدو ب on
-        reference.child("Book").addValueEventListener(new ValueEventListener()
+        FirebaseDatabase.getInstance().getReference().child("Book").addValueEventListener(new ValueEventListener()
         {
             /**
              *                  دالة معالجة حدث عند تغيير اي قيمة في ال firebase

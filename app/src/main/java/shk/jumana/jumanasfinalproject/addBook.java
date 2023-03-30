@@ -179,7 +179,7 @@ public class addBook extends AppCompatActivity
         if (isOk)
         {
             //جذر شجرة المعطيات , عنوان جذر شجرة المعطيات
-            FirebaseDatabase.getInstance().getReference().child("Book").child(owner).child(key).setValue(b).addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseDatabase.getInstance().getReference().child("Book").child(key).setValue(b).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
 
