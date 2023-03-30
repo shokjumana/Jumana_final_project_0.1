@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     BookAdapter bookAdapter;
     //list to show all the books
     ListView bookList;
+    SearchView searchView;
 
         @Override
         protected void onCreate(Bundle savedInstanceState)
@@ -60,10 +62,6 @@ public class MainActivity extends AppCompatActivity
 
                 //downloading and working on listener for every change on قاعدة البيانات and cleans the given info so it deletes
             //it and downloads new info.
-
-
-
-
 
             btnAddBook.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -156,9 +154,6 @@ public class MainActivity extends AppCompatActivity
 
 
     }
-
-
-
 
 
 

@@ -44,7 +44,6 @@ public class ProfileActivity extends AppCompatActivity
     private TextInputEditText ProfileLastName;
     private TextInputEditText ProfileEmail;
     private TextInputEditText ProfileBirthday;
-    private TextInputEditText ProfileLang;
     private TextInputEditText ProfileCountry;
     private ImageView ProfileImage;
     private Button btnProfSave;
@@ -77,7 +76,6 @@ public class ProfileActivity extends AppCompatActivity
         ProfileLastName=findViewById(R.id.ProfileLastName);
         ProfileEmail=findViewById(R.id.ProfileEmail);
         ProfileBirthday=findViewById(R.id.ProfileBirthday);
-        ProfileLang=findViewById(R.id.ProfileLang);
         ProfileCountry=findViewById(R.id.ProfileCountry);
         ProfileImage=findViewById(R.id.ProfileImage);
         btnProfSave=findViewById(R.id.btnProfSave);
@@ -110,7 +108,7 @@ public class ProfileActivity extends AppCompatActivity
                     if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                         //permission not granted, request it.
                         String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                        //show popup for runtime permission
+                        //show pop up for runtime permission
                         requestPermissions(permissions, PERMISSION_CODE);
                     } else {
                         //permission already granted
@@ -126,7 +124,6 @@ public class ProfileActivity extends AppCompatActivity
         String FirstName = ProfileName.getText().toString();
         String LastName = ProfileLastName.getText().toString();
         String ProEmail = ProfileEmail.getText().toString();
-        String ProLanguage = ProfileLang.getText().toString();
         String ProCountry = ProfileCountry.getText().toString();
 
 
