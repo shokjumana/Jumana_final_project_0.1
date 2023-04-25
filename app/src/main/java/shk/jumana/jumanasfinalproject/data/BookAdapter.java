@@ -36,6 +36,7 @@ import shk.jumana.jumanasfinalproject.addBook;
 public class BookAdapter extends ArrayAdapter<Book>
 {
     //search 5:
+    private ValueFilter valueFilter;
     List<String>bData;
     List<String>bStringFilterList;
 
@@ -104,11 +105,15 @@ public class BookAdapter extends ArrayAdapter<Book>
     //search 1:
     @NonNull
     @Override
-    public Filter getFilter()
-    {
-        //search 4:
-        return super.getFilter();
-    }
+             public Filter getFilter()
+                 {
+                 //search 4:
+                    if (valueFilter ==null)
+                        {
+                            valueFilter = new ValueFilter();
+                        }
+                            return valueFilter;
+                 }
 
 
     //search 2:
@@ -129,9 +134,10 @@ public class BookAdapter extends ArrayAdapter<Book>
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         clear();
                         for (DataSnapshot d : snapshot.getChildren()) {
+                            //يمر على جميع معطيات قيم d
                             String[] s = toSearch.toString().split(" ");//cuts the sentence to words and for every word it starts to search.
                             Book b = d.getValue(Book.class);
-
+                            //استخراج الكائن محفوظ
                             int count = 0;
                             for (int i = 0; i < s.length; i++) {
                                 // MainActivity mainActivity=(MainActivity) getContext();
@@ -156,7 +162,6 @@ public class BookAdapter extends ArrayAdapter<Book>
                                     count++;
                                     filterlist.add(b.getAbout());
                                 }
-
 
                             }
 
@@ -183,7 +188,6 @@ public class BookAdapter extends ArrayAdapter<Book>
                 results.values=all;
             }
             return results;
-
         }
 
         @Override

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     ListView bookList;
     SearchView searchView;
 
+        @SuppressLint("MissingInflatedId")
         @Override
         protected void onCreate(Bundle savedInstanceState)
         {
@@ -58,9 +60,32 @@ public class MainActivity extends AppCompatActivity
 
             ReadBookFromFirebase();
 
+            // doing search bar
+            searchView=findViewById(R.id.search);
+            searchView.setActivated(true);
+            searchView.setQueryHint("type your keyword here");
+            searchView.onActionViewExpanded();
+            searchView.setIconified(false);
+            searchView.clearFocus();
 
 
-                //downloading and working on listener for every change on قاعدة البيانات and cleans the given info so it deletes
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText)
+                {
+
+                    bookAdapter.getFilter().filter(newText);
+                    return false;
+                }
+            });
+
+            //downloading and working on listener for every change on قاعدة البيانات and cleans the given info so it deletes
             //it and downloads new info.
 
             btnAddBook.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +96,7 @@ public class MainActivity extends AppCompatActivity
                     startActivity(i);
                 }
             });
-
             }
-
-
         }
 
 
@@ -142,7 +164,6 @@ public class MainActivity extends AppCompatActivity
                     //build dialog
                     //خروج وتخزين
                     dialogInterface.cancel();
-
                 }
             });
             AlertDialog dialog=builder.create();
@@ -151,8 +172,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         return true;
-
-
     }
 
 
@@ -191,7 +210,6 @@ public class MainActivity extends AppCompatActivity
                 }
 
             }
-
 
 
             @Override
