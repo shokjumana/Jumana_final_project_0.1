@@ -107,41 +107,15 @@ btnEdit.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view)
     {
-        if (tvBookAuthor.isEnabled() && tvBookName.isEnabled()&&tvBookGenre.isEnabled())
-        {
-            // Save the edited information
-            String updatedInfoName = tvBookName.getText().toString();
-            String updatedInfoAuthor = tvBookAuthor.getText().toString();
-            String updatedInfoGenre = tvBookGenre.getText().toString();
-
-
-            // Update the text view with the new information
-            tvBookName.setText(updatedInfoName);
-            tvBookAuthor.setText(updatedInfoAuthor);
-            tvBookGenre.setText(updatedInfoGenre);
-
-// Disable editing mode
-            tvBookName.setEnabled(false);
-            tvBookAuthor.setEnabled(false);
-            tvBookGenre.setEnabled(false);
-
-            btnEdit.setText("Edit");
-        } else {
-            // Enable editing mode
-            tvBookAuthor.setEnabled(true);
-            tvBookName.setEnabled(true);
-            tvBookGenre.setEnabled(true);
-
-            btnEdit.setText("Save");
-
-
+        Intent i = new Intent(getContext(),addBook.class);
+        i.putExtra("Book", String.valueOf(book));
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getContext().startActivity(i);
         }
-};
-                           });
+});
 
         return vBook;
     }
-
 
 
     //search 1:

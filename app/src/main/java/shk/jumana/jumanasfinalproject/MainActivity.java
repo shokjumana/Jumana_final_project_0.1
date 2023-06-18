@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity
     BookAdapter bookAdapter;
     //list to show all the books
     ListView bookList;
+    private Menu menu;
 
     private SearchView searchView;
 
 
 
 
-        @SuppressLint("MissingInflatedId")
         @Override
         protected void onCreate(Bundle savedInstanceState)
         {
@@ -51,30 +51,29 @@ public class MainActivity extends AppCompatActivity
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
             //بناء شاشة التنسيق وكل الكائنات التي تحويه
-
             btnAddBook=findViewById(R.id.btnAddBook);
             //بناء وسيط
-            bookAdapter = new BookAdapter(getApplicationContext());
             //تجهيز مؤشر لقائمة العرض
             bookList=findViewById(R.id.BookList);
-
             bookList.setAdapter(bookAdapter);
 
 
 
-                ReadBookFromFirebase();
 
-            // doing search bar
+                // doing search bar
                 searchView=findViewById(R.id.searchView);
                 searchView.setActivated(true);
                 searchView.setQueryHint("type your keyword here");
                 searchView.onActionViewExpanded();
                 searchView.setIconified(false);
                 searchView.clearFocus();
+                bookAdapter = new BookAdapter(getApplicationContext());
+
+                ReadBookFromFirebase();
 
 
 
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query)
                 {
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity
                 {
 
                     bookAdapter.getFilter().filter(newText);
-                    return false;
+                    return true;
                 }
             });
 
