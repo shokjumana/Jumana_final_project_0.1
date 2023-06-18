@@ -2,6 +2,7 @@ package shk.jumana.jumanasfinalproject.data;
 
 public class Book
 {
+    //Define variables
     private String image;
     private String key;
     private String owner;
@@ -17,6 +18,7 @@ public class Book
     {
 
     }
+    //getters and setters
 
     public String getImage() {
         return image;

@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Sign_In extends AppCompatActivity
 {
-
+    //تعريف معطيات
     private TextInputEditText etEmail1;
     private TextInputEditText etPassword1;
     private Button btnSignIn1;
@@ -31,7 +31,8 @@ public class Sign_In extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);//يبني واجهة المستعمل بحيث تبني كل الكائنات الموجودة في ملف التنسيق ال xml
+        setContentView(R.layout.activity_sign_in);
+        //يبني واجهة المستعمل بحيث تبني كل الكائنات الموجودة في ملف التنسيق ال xml
 
         etEmail1=findViewById(R.id.etEmail1);
         etPassword1=findViewById(R.id.etPassword1);
@@ -53,7 +54,7 @@ public class Sign_In extends AppCompatActivity
         // and the listener is set using the setOnClickListener() method.
         //تحتوي واجهة OnClickListener () على طريقة onClick (View v) التي يتم استدعاؤها عند النقر فوق العرض (المكون).
 
-
+    //if they press sign up they go to the sign up page
         btnSignUp1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -73,7 +74,6 @@ public class Sign_In extends AppCompatActivity
 
                 CheckAndSave();//the purpose of check and save is to go to the sign in page
                 //توثيق خاص : used for signing in and signing out
-
 
             }
         });
@@ -118,8 +118,10 @@ public class Sign_In extends AppCompatActivity
 
         if (isOk)
         {
-            FirebaseAuth auth=FirebaseAuth.getInstance();// بفتح ال firebase و بتسجل فيو ال email and password
-            auth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            FirebaseAuth auth=FirebaseAuth.getInstance();
+            // بفتح ال firebase و بتسجل فيو ال email and password
+            auth.signInWithEmailAndPassword(Email,Password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task)
                 {
@@ -132,8 +134,10 @@ public class Sign_In extends AppCompatActivity
                     }
 
                     else
-                        Toast.makeText(Sign_In.this, "Not Successful"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//when it completes it finishes and goes to the main activity page,close current activity and                         //gives a text that its not working - creation failed
+                        Toast.makeText(Sign_In.this, "Not Successful"+task.getException().getMessage(),
+                                Toast.LENGTH_SHORT).show();
+                //when it completes it finishes and goes to the main activity page,close current activity and
+                // gives a text that its not working - creation failed
                 }
             });
 

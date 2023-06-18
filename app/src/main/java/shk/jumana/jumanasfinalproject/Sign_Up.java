@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Sign_Up extends AppCompatActivity {
 
+    //define verbals
     private TextInputEditText etUsername;
     private TextInputEditText etEmail2;
     private TextInputEditText etPassword2;
@@ -33,8 +34,6 @@ public class Sign_Up extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
-
 
         etEmail2=findViewById(R.id.etEmail2);
         etPassword2=findViewById(R.id.etPassword2);
@@ -48,16 +47,10 @@ public class Sign_Up extends AppCompatActivity {
             {
                 Toast.makeText(Sign_Up.this,"Username is"+etUsername,Toast.LENGTH_SHORT).show();
 
-
-
                 CheckAndSave();//the purpose of check and save is to go to the sign in page
                 //توثيق خاص : used for signing in and signing out
-
-
             }
         });
-
-
     }
 
     private void CheckAndSave()
@@ -69,7 +62,8 @@ public class Sign_Up extends AppCompatActivity {
 
         //لما نعمل فحص احنا منحط احتمال انو غلط , عشان اذا كان الفحص غلط ,بوقف عن العمل
 
-        if (Email.length()*Password.length()*ConfirmPassword.length()==0)//تفحص اذا كلمة السر وتأكيد كلمة السر يساوون 0
+        if (Email.length()*Password.length()*ConfirmPassword.length()==0)
+            //تفحص اذا كلمة السر وتأكيد كلمة السر يساوون 0
         {
             etEmail2.setError("one of the files are empty");
             isOk=false;
@@ -84,7 +78,8 @@ public class Sign_Up extends AppCompatActivity {
         if (isOk)
         {
             FirebaseAuth auth=FirebaseAuth.getInstance();
-            auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener
+                    (new OnCompleteListener<AuthResult>() {
                 /**
                  * * when the mission of this task-is complete
                  * @param task   info about the event
@@ -99,21 +94,17 @@ public class Sign_Up extends AppCompatActivity {
                         // It only fills the amount of space required for the message
                         // and the current activity remains visible and interactive.
                         // Toasts automatically disappear after a timeout
+                        //هو مربع صغير الذي يظهر عندما نقوم بانتظار جواب ما ويختفي بعد وقت
                         Toast.makeText(Sign_Up.this, "creation successful", Toast.LENGTH_SHORT).show();
                         finish();//when it completes it finishes and goes to the sign in page,close current activity
                     }
                     else
                     {
-                        Toast.makeText(Sign_Up.this, "creation failed"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Sign_Up.this, "creation failed"+task.getException().getMessage(),
+                                Toast.LENGTH_SHORT).show();
                     }                        //gives a text that its not working - creation failed
-
-
                 }
             });
-
-
-
         }
-
     }
 }

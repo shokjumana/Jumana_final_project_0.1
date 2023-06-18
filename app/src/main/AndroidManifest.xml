@@ -24,20 +24,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Settings"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".History"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".addBook"
             android:exported="false">
             <meta-data

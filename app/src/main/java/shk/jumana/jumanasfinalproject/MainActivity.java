@@ -1,7 +1,5 @@
 package shk.jumana.jumanasfinalproject;
 
-import static shk.jumana.jumanasfinalproject.R.id.btnAddBook;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,7 +37,11 @@ public class MainActivity extends AppCompatActivity
     BookAdapter bookAdapter;
     //list to show all the books
     ListView bookList;
-    SearchView searchView;
+
+    private SearchView searchView;
+
+
+
 
         @SuppressLint("MissingInflatedId")
         @Override
@@ -58,21 +60,24 @@ public class MainActivity extends AppCompatActivity
 
             bookList.setAdapter(bookAdapter);
 
-            ReadBookFromFirebase();
+
+
+                ReadBookFromFirebase();
 
             // doing search bar
-            searchView=findViewById(R.id.search);
-            searchView.setActivated(true);
-            searchView.setQueryHint("type your keyword here");
-            searchView.onActionViewExpanded();
-            searchView.setIconified(false);
-            searchView.clearFocus();
+                searchView=findViewById(R.id.searchView);
+                searchView.setActivated(true);
+                searchView.setQueryHint("type your keyword here");
+                searchView.onActionViewExpanded();
+                searchView.setIconified(false);
+                searchView.clearFocus();
 
 
 
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
-                public boolean onQueryTextSubmit(String query) {
+                public boolean onQueryTextSubmit(String query)
+                {
                     return false;
                 }
 
@@ -85,9 +90,14 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
-            //downloading and working on listener for every change on قاعدة البيانات and cleans the given info so it deletes
-            //it and downloads new info.
 
+
+
+                //downloading and working on listener for every change on
+                // قاعدة البيانات and cleans the given info so it deletes
+                //it and downloads new info.
+
+                //button that make the user go from the main activity page to the add book page to add books.
             btnAddBook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view)
@@ -101,6 +111,7 @@ public class MainActivity extends AppCompatActivity
 
 
     //دالة مسؤولة عن فحص و تشغيل ال menu
+    //build menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -111,16 +122,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
-        if (item.getItemId() == R.id.itmSettings)
-        {
-            Intent i = new Intent(MainActivity.this, Settings.class);
-            startActivity(i);
-        }
-        if (item.getItemId() == R.id.itmHistory)
-        {
-            Intent i = new Intent(MainActivity.this, History.class);
-            startActivity(i);
-        }
         if (item.getItemId() == R.id.itmProfile)
         {
             Intent i = new Intent(MainActivity.this, ProfileActivity.class);
@@ -175,7 +176,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     private void ReadBookFromFirebase()
     {
 
@@ -187,6 +187,7 @@ public class MainActivity extends AppCompatActivity
         //عندها يتم تنزيل,تحميل كل المعطيات الموجودة تحت الجذر
         //كل معالجي الحدث ببدو ب on
         FirebaseDatabase.getInstance().getReference().child("Book").addValueEventListener(new ValueEventListener()
+            //تسمح للمستخدم ان يرى التغييرات التي تحدث في الداتا وتقوم بالعمل حسبه
         {
             /**
              *                  دالة معالجة حدث عند تغيير اي قيمة في ال firebase
@@ -210,7 +211,6 @@ public class MainActivity extends AppCompatActivity
                 }
 
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error)

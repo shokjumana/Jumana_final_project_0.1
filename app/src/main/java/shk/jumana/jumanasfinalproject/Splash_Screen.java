@@ -11,6 +11,11 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Splash_Screen extends AppCompatActivity
 {
 
+
+    //onCreate(Bundle) is where you initialize your activity.
+    // Most importantly, here you will usually call setContentView(int) with a layout resource defining your UI,
+    // and using findViewById(int) to retrieve the widgets in that UI that you need to interact with programmatically.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +51,7 @@ public class Splash_Screen extends AppCompatActivity
 
                 }
         };
-
+        //the page disappears after a few seconds
         H.postDelayed(r,3000);
 
     }

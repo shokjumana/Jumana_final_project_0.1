@@ -54,6 +54,7 @@ public class addBook extends AppCompatActivity
     private static final int IMAGE_PICK_CODE=100;
     private static final int PERMISSION_CODE=101;
 
+    //define verbals
     private TextInputEditText etNameBook;
     private TextInputEditText etAuthor;
     private TextInputEditText etReleaseDate;
@@ -73,12 +74,14 @@ public class addBook extends AppCompatActivity
     private ImageView btnImageBook;
     private Uri filePath;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
+
+        //a method of Android's View and Activity classes.
+        // The method is used to find an existing view in your XML layout by its android:id attribute.
         etNameBook = findViewById(R.id.etNameBook);
         etAuthor = findViewById(R.id.etAuthor);
         etReleaseDate = findViewById(R.id.etReleaseDate);
@@ -88,6 +91,7 @@ public class addBook extends AppCompatActivity
         btnCancel = findViewById(R.id.btnCancel);
         btnSaveTask = findViewById(R.id.btnSaveTask);
 
+        //الهدف من هذا الكود هو فحص اذا القيمة موجوجة , اذا عثرو على القيمة يعرض رسالة اذا لم يكن هناك قيمة يعرض انه لا يوجد قيمة
         SharedPreferences preferences=getSharedPreferences("mypref",MODE_PRIVATE);
         String key = preferences.getString("key", "");
 
@@ -102,13 +106,15 @@ public class addBook extends AppCompatActivity
         btnImageBook = findViewById(R.id.btnImageBook);
         
         //upload : 4
+        //في هذه الدالة تقوم اذن اذا ينزل صورة او قام باعطاء اذن
         btnImageBook.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "image", Toast.LENGTH_SHORT).show();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager
+                            .PERMISSION_DENIED) {
                         //permission not granted, request it.
                         String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
                         //show popup for runtime permission
@@ -121,7 +127,7 @@ public class addBook extends AppCompatActivity
             }
         });
 
-
+        //cancel button that cancels all that is written before saving
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +136,7 @@ public class addBook extends AppCompatActivity
             }
         });
 
-
+        //button that saves the photo we added
         btnSaveTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -145,7 +151,7 @@ public class addBook extends AppCompatActivity
         });
     }
 
-
+    //اسم دالة التي ستقوم بحفظ المعلومات لدى الكتاب
     private void CheckAndSave() {
         boolean isOk = true;
         String Name = etNameBook.getText().toString();
@@ -153,6 +159,7 @@ public class addBook extends AppCompatActivity
         String Genre = etGenre.getText().toString();
         String About = etAbout.getText().toString();
 
+        //تفحص اذا حقول هذه الكلمات فارغة
         if (Name.length() * Author.length() * About.length() * Genre.length() == 0) {
             etNameBook.setError("one of the files are empty");
             isOk = false;
@@ -176,18 +183,22 @@ public class addBook extends AppCompatActivity
                 .getKey();//استخراج الرقم المميز من المهمة التي سيتم اضافتها
         b.setKey(key);
 
+
         if (isOk)
         {
             //جذر شجرة المعطيات , عنوان جذر شجرة المعطيات
-            FirebaseDatabase.getInstance().getReference().child("Book").child(key).setValue(b).addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseDatabase.getInstance().getReference().child("Book").child(key).setValue(b)
+                    .addOnCompleteListener(new OnCompleteListener<Void>()
+                        //هو مراقب بعطي رسالة اذا نحفظ الكتاب ام لا
+                    {
                 @Override
-                public void onComplete(@NonNull Task<Void> task) {
-
+                public void onComplete(@NonNull Task<Void> task)
+                {
                     if (task.isSuccessful()) {
                         finish();
                         Toast.makeText(addBook.this, "added successfully", Toast.LENGTH_SHORT).show();
-                    } else {
-
+                    } else
+                    {
                         Toast.makeText(addBook.this, "added failed", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -195,7 +206,8 @@ public class addBook extends AppCompatActivity
         }
     }
 
-
+    // دالة التي تقوم بتنزيل صورة وحفظها في الfire base storage
+    //ويقوم عرض مربع ان تم حفظه ام لا.
     private void uploadImage(Uri filePath)
     {
         if(filePath != null)
@@ -220,7 +232,6 @@ public class addBook extends AppCompatActivity
                                     CheckAndSave();
                                 }
                             });
-
                             Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
@@ -228,7 +239,8 @@ public class addBook extends AppCompatActivity
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Failed "+e.getMessage(),
+                                    Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -296,6 +308,7 @@ public class addBook extends AppCompatActivity
 //            isok=false;
 //
 //        }
+        //في هذه الدالة تقوم بفحص اذا صحيح فيبني كتاب ويقرر اذا يريد ان يعرض ان الكتاب نزل
         if(isok)
         {
             b=new Book();
@@ -343,6 +356,7 @@ public class addBook extends AppCompatActivity
         }
     }
 
+    //lets u pick photo from gallery
     private void pickImageFromGallery()
     {
         Intent intent=new Intent(Intent.ACTION_PICK);
@@ -350,8 +364,11 @@ public class addBook extends AppCompatActivity
         startActivityForResult(intent,IMAGE_PICK_CODE);
     };
 
+
+    //في هذه الدالة تقوم باعاطاء الاذن اذا ممكن اختيار صورة من ال gallery
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[]
+            grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case PERMISSION_CODE: {
@@ -366,6 +383,8 @@ public class addBook extends AppCompatActivity
         }
     }
 
+
+    //upload the image and sets it to view
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);

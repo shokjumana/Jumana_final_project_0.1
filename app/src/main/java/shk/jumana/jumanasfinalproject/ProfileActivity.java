@@ -37,6 +37,8 @@ import shk.jumana.jumanasfinalproject.data.Book;
 
 public class ProfileActivity extends AppCompatActivity
 {
+
+    //define verbals
     private static final int IMAGE_PICK_CODE = 100;
     private static final int PERMISSION_CODE=101;
     private Button btnProUpload;
@@ -62,6 +64,8 @@ public class ProfileActivity extends AppCompatActivity
         setContentView(R.layout.activity_profile);
 
         btnProUpload=findViewById(R.id.btnProUpload);
+
+        //الهدف من هذا الكود هو فحص اذا القيمة موجوجة , اذا عثرو على القيمة يعرض رسالة اذا لم يكن هناك قيمة يعرض انه لا يوجد قيمة
         SharedPreferences preferences=getSharedPreferences("mypref",MODE_PRIVATE);
         String key = preferences.getString("key", "");
 
@@ -72,6 +76,9 @@ public class ProfileActivity extends AppCompatActivity
             Toast.makeText(this, "key:"+key, Toast.LENGTH_SHORT).show();
         }
 
+
+        //a method of Android's View and Activity classes.
+        // The method is used to find an existing view in your XML layout by its android:id attribute.
         ProfileName=findViewById(R.id.ProfileName);
         ProfileLastName=findViewById(R.id.ProfileLastName);
         ProfileEmail=findViewById(R.id.ProfileEmail);
@@ -87,6 +94,7 @@ public class ProfileActivity extends AppCompatActivity
             }
         });
 
+        //sees if pic is there if not upload
         btnProUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -94,18 +102,20 @@ public class ProfileActivity extends AppCompatActivity
                 if(toUploadimageUri!= null)
                     uploadImage(toUploadimageUri);
                 else
-                    checkAndSave();
+                    checkAndSave();//the purpose of check and save is upload pics page
+                //توثيق خاص : used for checking if there is photo and to save the photo
             }
         });
 
-
+        //click profile pic and pick photo
         ProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 Toast.makeText(getApplicationContext(), "image", Toast.LENGTH_SHORT).show();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager
+                            .PERMISSION_DENIED) {
                         //permission not granted, request it.
                         String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
                         //show pop up for runtime permission
@@ -145,8 +155,10 @@ public class ProfileActivity extends AppCompatActivity
 
         //جذر شجرة المعطيات , عنوان جذر شجرة المعطيات
 
-
-        FirebaseDatabase.getInstance().getReference().child("Book").child(owner).child(key).setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference().child("Book").child(owner).child(key)
+                .setValue(book).addOnCompleteListener(new OnCompleteListener<Void>()
+            //هو مراقب بعطي رسالة اذا نحفظ الكتاب ام لا
+                {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
@@ -161,7 +173,7 @@ public class ProfileActivity extends AppCompatActivity
         });
     }
 
-
+    //pick pic from gallery
     private void pickImageFromGallery()
     {
         //intent to pick image
@@ -269,7 +281,6 @@ public class ProfileActivity extends AppCompatActivity
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         downladuri = task.getResult();
                                         book.setImage(downladuri.toString());
-
                                     }
                                 });
 
@@ -280,7 +291,8 @@ public class ProfileActivity extends AppCompatActivity
                             @Override
                             public void onFailure(@NonNull Exception e) {
                             //    progressDialog.dismiss();
-                                Toast.makeText(getApplicationContext(), "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Failed " + e.getMessage(),
+                                        Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -297,8 +309,10 @@ public class ProfileActivity extends AppCompatActivity
             }
         }
     }
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case PERMISSION_CODE: {
